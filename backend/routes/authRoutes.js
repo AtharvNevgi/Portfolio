@@ -8,6 +8,10 @@ const router = express.Router();
 // One-time use to create the first admin
 // router.post("/register", registerAdmin);
 
+router.get("/login", (req, res) => {
+  res.send("Login page");
+})
+
 // Admin login
 router.post("/login", loginAdmin);
 
