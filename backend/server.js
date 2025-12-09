@@ -11,6 +11,10 @@ const {aboutRouter} = require("./routes/aboutRoutes");
 const {skillRouter} = require("./routes/skillRoutes");
 const {projectRouter} = require("./routes/projectRoutes");
 const {experienceRouter} = require("./routes/experienceRoutes");
+const {serviceRouter} = require("./routes/serviceRoutes");
+const {testimonialRouter} = require("./routes/testimonialsRoutes");
+const blogRouter = require("./routes/blogRoutes");
+const {contactRouter} = require("./routes/contactRoutes");
 
 // middleware
 app.use(express.json());
@@ -27,6 +31,14 @@ app.use("/cms/skill", skillRouter)
 app.use("/cms/project", projectRouter);
 
 app.use("/cms/experience", experienceRouter);
+
+app.use("/cms/services", serviceRouter);
+
+app.use("/cms/testimonials", testimonialRouter);
+
+app.use("/cms/blogs", blogRouter);
+
+app.use("/cms/contact", contactRouter);
 
 // authentication
 
