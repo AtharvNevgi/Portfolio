@@ -1,5 +1,5 @@
 const express = require("express");
-const multer = require("multer")
+const upload = require("../config/multer.js");
 const { protect } = require("../middleware/authMiddleware.js");
 const {
   getServices,
@@ -9,15 +9,6 @@ const {
 } = require("../controllers/serviceController.js");
 
 const serviceRouter = express.Router();
-
-// Multer setup
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "uploads/"),
-  filename: (req, file, cb) =>
-    cb(null, Date.now() + "-" + file.originalname)
-});
-
-const upload = multer({ storage });
 
 // Public route
 serviceRouter.get("/", getServices);

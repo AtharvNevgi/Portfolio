@@ -2,6 +2,7 @@ require("dotenv").config({quiet:true})
 const express = require("express");
 const PORT = process.env.PORT || 3000;
 require("./config/db")
+require("./config/cloudinary")
 
 const app = express();
 

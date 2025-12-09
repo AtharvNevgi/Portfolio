@@ -1,18 +1,9 @@
 const express = require("express");
-const multer = require("multer");
+const upload = require("../config/multer.js");
 const {protect} = require("../middleware/authMiddleware.js");
 const { getProjects, createProject, updateProject, deleteProject } = require("../controllers/projectController.js");
 
 const projectRouter = express.Router();
-
-// Multer for multiple images
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "uploads/"),
-  filename: (req, file, cb) =>
-    cb(null, Date.now() + "-" + file.originalname)
-});
-
-const upload = multer({ storage });
 
 // Public route
 projectRouter.get("/", getProjects);
