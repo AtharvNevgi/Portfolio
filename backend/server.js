@@ -1,10 +1,17 @@
 require("dotenv").config({quiet:true})
 const express = require("express");
+const cors = require("cors");
 const PORT = process.env.PORT || 3000;
 require("./config/db")
 require("./config/cloudinary")
 
 const app = express();
+
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true,
+}));
+
 
 // routes
 const {router} = require("./routes/authRoutes");
