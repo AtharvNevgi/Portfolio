@@ -1,6 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
+import About from './pages/About';
+import Projects from './pages/Projects';
+import Experience from './pages/Experience';
+import Services from './pages/Services';
 import Dashboard from "./pages/Dashboard";
+import Testimonials from "./pages/Testimonials";
+import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 export default function App() {
@@ -18,8 +25,63 @@ export default function App() {
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
-          } 
-        />
+          }/>
+
+        <Route 
+          path="/about"
+          element={
+            <ProtectedRoute>
+              <About />
+            </ProtectedRoute>
+          }/>
+
+        <Route 
+          path="/projects"
+          element={
+            <ProtectedRoute>
+              <Projects />
+            </ProtectedRoute>
+          }/>
+
+        <Route 
+          path="/experience"
+          element={
+            <ProtectedRoute>
+              <Experience />
+            </ProtectedRoute>
+          }/>
+
+        <Route 
+          path="/services"
+          element={
+            <ProtectedRoute>
+              <Services />
+            </ProtectedRoute>
+          }/>
+
+        <Route 
+          path="/testimonials"
+          element={
+            <ProtectedRoute>
+              <Testimonials />
+            </ProtectedRoute>
+          }/>
+
+        <Route 
+          path="/blog"
+          element={
+            <ProtectedRoute>
+              <Blog />
+            </ProtectedRoute>
+          }/>
+
+        <Route 
+          path="/contact"
+          element={
+            <ProtectedRoute>
+              <Contact />
+            </ProtectedRoute>
+          }/>
 
       </Routes>
     </BrowserRouter>

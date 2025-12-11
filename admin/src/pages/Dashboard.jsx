@@ -1,7 +1,12 @@
+import Sidebar from "../components/Sidebar";
+
 export default function Dashboard() {
   return (
-    <div className="p-10">
-      <h1 className="text-3xl font-bold">Welcome to Admin Dashboard</h1>
+    <div className="flex">
+      <Sidebar />
+      <div className="ml-64 p-10 w-full">
+        <h1 className="text-3xl font-bold">Welcome to Admin Dashboard</h1>
+      </div>
     </div>
   );
 }
