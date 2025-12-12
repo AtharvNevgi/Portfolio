@@ -1,7 +1,6 @@
 const express = require("express")
 const {getAbout, updateAbout} = require("../controllers/aboutController.js")
 const {protect} = require("../middleware/authMiddleware.js")
-const upload = require("../config/multer.js");
 
 const aboutRouter = express.Router();
 
@@ -9,6 +8,6 @@ const aboutRouter = express.Router();
 aboutRouter.get("/", getAbout);
 
 // Admin route → Protected
-aboutRouter.put("/", protect, upload.single("profileImage"), updateAbout);
+aboutRouter.put("/", protect, updateAbout);
 
 module.exports = {aboutRouter};
