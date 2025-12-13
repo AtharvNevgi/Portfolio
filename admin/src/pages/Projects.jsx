@@ -69,7 +69,7 @@ export default function Projects() {
               title: "Saved Successfully!",
               text: "Your Project section has been saved.",
               showConfirmButton: false,
-              timer: 1900
+              timer: 1200
             });
       fetchProjects();
     } catch (err) {

@@ -5,11 +5,12 @@ export default function Sidebar() {
     { name: "Dashboard", path: "/dashboard" },
     { name: "About", path: "/about" },
     { name: "Projects", path: "/projects" },
+    { name: "Skill", path: "/skills"},
     { name: "Experience", path: "/experience" },
     { name: "Services", path: "/services" },
     { name: "Testimonials", path: "/testimonials" },
     { name: "Blog", path: "/blog" },
-    { name: "Contact", path: "/contact" },
+    { name: "Contact", path: "/contact" }
   ];
 
   return (

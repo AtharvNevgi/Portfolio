@@ -55,12 +55,12 @@ export default function Experience() {
         description: "",
       });
       Swal.fire({
-                    icon: "success",
-                    title: "Saved Successfully!",
-                    text: "Your Experience section has been saved.",
-                    showConfirmButton: false,
-                    timer: 1900
-                  });
+        icon: "success",
+        title: "Saved Successfully!",
+        text: "Your Experience section has been saved.",
+        showConfirmButton: false,
+        timer: 1200
+      });
       setEditId(null);
       fetchExperiences();
     } catch (err) {

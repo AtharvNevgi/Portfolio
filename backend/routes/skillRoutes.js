@@ -9,8 +9,8 @@ const skillRouter = express.Router();
 skillRouter.get("/", getSkills);
 
 // Admin routes
-skillRouter.post("/", protect, upload.single("icon"), createSkill);
-skillRouter.put("/:id", protect, upload.single("icon"), updateSkill);
+skillRouter.post("/", protect, createSkill);
+skillRouter.put("/:id", protect, updateSkill);
 skillRouter.delete("/:id", protect, deleteSkill);
 
 module.exports = {skillRouter};

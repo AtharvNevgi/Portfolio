@@ -48,7 +48,7 @@ export default function About() {
         title: "Updated Successfully!",
         text: "Your About section has been saved.",
         showConfirmButton: false,
-        timer: 1900
+        timer: 1200
       });
       console.log(res.data);
     } catch (err) {

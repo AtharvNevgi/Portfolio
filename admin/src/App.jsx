@@ -9,6 +9,7 @@ import Testimonials from "./pages/Testimonials";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Skill from "./pages/Skill";
 
 export default function App() {
   return (
@@ -40,6 +41,14 @@ export default function App() {
           element={
             <ProtectedRoute>
               <Projects />
+            </ProtectedRoute>
+          }/>
+
+        <Route 
+          path="/skills"
+          element={
+            <ProtectedRoute>
+              <Skill />
             </ProtectedRoute>
           }/>
 
