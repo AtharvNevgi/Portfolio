@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import API from "../api/axios";
@@ -25,7 +26,6 @@ export default function Projects() {
   };
   
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchProjects();
   }, []);
 
@@ -66,7 +66,7 @@ export default function Projects() {
       setEditId(null);
       Swal.fire({
               icon: "success",
-              title: "Updated Successfully!",
+              title: "Saved Successfully!",
               text: "Your Project section has been saved.",
               showConfirmButton: false,
               timer: 1900
@@ -106,6 +106,25 @@ export default function Projects() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // Cancel Edit
+  const cancelEdit = async () => {
+    Swal.fire({
+                    icon: "info",
+                    title: "Cancel Successfully!",
+                    showConfirmButton: false,
+                    timer: 1200
+                  });
+      setEditId(null);
+      setFormData({
+        title: "",
+        description: "",
+        techStack: "",
+        githubLink: "",
+        liveLink: "",
+      });
+
+      fetchProjects();
+  }
 
   return (
     <div className="flex">
@@ -162,15 +181,21 @@ export default function Projects() {
             onChange={handleChange}
             className="border p-2 w-full rounded"
           />
-
-          {/* <button className="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer">
-            Add Project
-          </button> */}
           <button className="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer">
             {editId ? "Update Project" : "Add Project"}
           </button>
-
         </form>
+
+        {editId ? 
+          (
+          <button className="bg-red-600 text-white px-4 py-2 m-4 rounded cursor-pointer" 
+              onClick={cancelEdit}
+          >
+            Cancel
+          </button>
+          ) : 
+          null
+        }
 
         {/* Projects List */}
         <div className="space-y-4">

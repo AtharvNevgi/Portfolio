@@ -14,8 +14,8 @@ const experienceRouter = express.Router();
 experienceRouter.get("/", getExperience);
 
 // Admin routes
-experienceRouter.post("/", protect, upload.single("logo"), createExperience);
-experienceRouter.put("/:id", protect, upload.single("logo"), updateExperience);
+experienceRouter.post("/", protect, createExperience);
+experienceRouter.put("/:id", protect, updateExperience);
 experienceRouter.delete("/:id", protect, deleteExperience);
 
 module.exports = {experienceRouter};
