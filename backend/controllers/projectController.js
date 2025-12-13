@@ -13,51 +13,49 @@ const getProjects = async (req, res) => {
 // CREATE project (admin only)
 const createProject = async (req, res) => {
   try {
+    // console.log("BODY RECEIVED:", req.body);
+
     const { title, description, techStack, githubLink, liveLink } = req.body;
 
-    let images = [];
-    if (req.files) {
-      images = req.files.map((file) => `/uploads/${file.filename}`);
+    if (!title || !description) {
+      return res.status(400).json({ message: "Title and description required" });
     }
 
-    const newProject = new Project({
+    const project = await Project.create({
       title,
       description,
-      techStack: techStack ? techStack.split(",") : [],
+      techStack,
       githubLink,
       liveLink,
-      images
     });
 
-    await newProject.save();
+    res.status(201).json(project);
 
-    res.json({
-      message: "Project created successfully",
-      project: newProject
-    });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error("CREATE PROJECT ERROR:", error);
+    res.status(500).json({ message: error.message });
   }
 };
+
 
 // UPDATE project
 const updateProject = async (req, res) => {
   try {
     const { title, description, techStack, githubLink, liveLink } = req.body;
 
-    let updatedData = {
+    if (!title || !description) {
+      return res.status(400).json({ message: "Title and description required" });
+    }
+
+    const updatedData = {
       title,
       description,
-      techStack: techStack ? techStack.split(",") : [],
+      techStack: Array.isArray(techStack)
+        ? techStack
+        : techStack?.split(",").map(t => t.trim()),
       githubLink,
-      liveLink
+      liveLink,
     };
-
-    if (req.files && req.files.length > 0) {
-      updatedData.images = req.files.map(
-        (file) => `/uploads/${file.filename}`
-      );
-    }
 
     const updated = await Project.findByIdAndUpdate(
       req.params.id,
@@ -67,9 +65,10 @@ const updateProject = async (req, res) => {
 
     res.json({
       message: "Project updated successfully",
-      project: updated
+      project: updated,
     });
   } catch (error) {
+    console.error("UPDATE PROJECT ERROR:", error);
     res.status(500).json({ error: error.message });
   }
 };

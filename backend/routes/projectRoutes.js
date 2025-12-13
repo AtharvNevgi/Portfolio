@@ -9,8 +9,8 @@ const projectRouter = express.Router();
 projectRouter.get("/", getProjects);
 
 // Admin routes
-projectRouter.post("/", protect, upload.array("images", 5), createProject);
-projectRouter.put("/:id", protect, upload.array("images", 5), updateProject);
+projectRouter.post("/", protect,  createProject);
+projectRouter.put("/:id", protect, updateProject);
 projectRouter.delete("/:id", protect, deleteProject);
 
 module.exports = {projectRouter};

@@ -7,6 +7,7 @@ export default function About() {
   const [aboutData, setAboutData] = useState({
     title: "",
     description: "",
+    updatedAt: ""
   });
 
   // Fetch existing about info
@@ -17,6 +18,7 @@ export default function About() {
         setAboutData({
           title: res.data.title || "",
           description: res.data.description || "",
+          updatedAt : res.data.updatedAt ||""
         });
       } catch (err) {
         console.log("Error fetching about:", err);
@@ -81,7 +83,7 @@ export default function About() {
             onChange={handleChange}
             className="border p-2 rounded w-full"
           ></textarea>
-
+          <p className="text-sm text-gray-500 font-medium">{`Last Updated on: ${aboutData.updatedAt.substring(0, 10)}`}</p>
           <button className="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer">
             Save Changes
           </button>

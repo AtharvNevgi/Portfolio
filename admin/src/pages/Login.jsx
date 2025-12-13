@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import API from "../api/axios";
 import { AuthContext } from "../context/AuthContext";
+import Swal from "sweetalert2";
 
 export default function Login() {
   const  {login}  = useContext(AuthContext);
@@ -13,7 +14,14 @@ export default function Login() {
     try {
       const res = await API.post("/login", { username, password });
       login(res.data.token);
-      console.log(username, password)
+      // console.log(username, password)
+      Swal.fire({
+              icon: "success",
+              title: "Login Successfully!",
+              text: "Welcom Admin",
+              showConfirmButton: false,
+              timer: 1900
+            });
       window.location.href = "/dashboard";
     } catch (error) {
       alert(error.response?.data?.message || "Login failed!");
