@@ -11,23 +11,6 @@ const getSkills = async (req, res) => {
 };
 
 // Create a skill (admin)
-// const createSkill = async (req, res) => {
-//   try {
-//     const { name, level } = req.body;
-
-//     let icon = "";
-//     if (req.file) {
-//       icon = `/uploads/${req.file.filename}`;
-//     }
-
-//     const newSkill = new Skill({ name, level, icon });
-//     await newSkill.save();
-
-//     res.json({ message: "Skill added", skill: newSkill });
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// };
 const createSkill = async (req, res) => {
   try {
     const { name, level } = req.body;
@@ -53,27 +36,6 @@ const createSkill = async (req, res) => {
 };
 
 // Update a skill
-// const updateSkill = async (req, res) => {
-//   try {
-//     const { name, level } = req.body;
-
-//     let updatedData = { name, level };
-
-//     if (req.file) {
-//       updatedData.icon = `/uploads/${req.file.filename}`;
-//     }
-
-//     const updatedSkill = await Skill.findByIdAndUpdate(
-//       req.params.id,
-//       updatedData,
-//       { new: true }
-//     );
-
-//     res.json({ message: "Skill updated", skill: updatedSkill });
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// };
 const updateSkill = async (req, res) => {
   try {
     const { name, level } = req.body;

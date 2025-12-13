@@ -15,25 +15,24 @@ const createService = async (req, res) => {
   try {
     const { title, description } = req.body;
 
-    let icon = "";
-    if (req.file) {
-      icon = `/uploads/${req.file.filename}`;
+    if (!title || !description) {
+      return res.status(400).json({
+        message: "Title and description are required"
+      });
     }
 
-    const newService = new Service({
+    const service = await Service.create({
       title,
-      description,
-      icon
+      description
     });
 
-    await newService.save();
-
-    res.json({
+    res.status(201).json({
       message: "Service added successfully",
-      service: newService
+      service
     });
 
   } catch (error) {
+    console.error("CREATE SERVICE ERROR:", error);
     res.status(500).json({ error: error.message });
   }
 };
@@ -43,24 +42,25 @@ const updateService = async (req, res) => {
   try {
     const { title, description } = req.body;
 
-    let updatedData = { title, description };
-
-    if (req.file) {
-      updatedData.icon = `/uploads/${req.file.filename}`;
+    if (!title || !description) {
+      return res.status(400).json({
+        message: "Title and description are required"
+      });
     }
 
-    const updated = await Service.findByIdAndUpdate(
+    const updatedService = await Service.findByIdAndUpdate(
       req.params.id,
-      updatedData,
+      { title, description },
       { new: true }
     );
 
     res.json({
       message: "Service updated successfully",
-      service: updated
+      service: updatedService
     });
 
   } catch (error) {
+    console.error("UPDATE SERVICE ERROR:", error);
     res.status(500).json({ error: error.message });
   }
 };

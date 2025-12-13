@@ -14,8 +14,8 @@ const serviceRouter = express.Router();
 serviceRouter.get("/", getServices);
 
 // Admin routes
-serviceRouter.post("/", protect, upload.single("icon"), createService);
-serviceRouter.put("/:id", protect, upload.single("icon"), updateService);
+serviceRouter.post("/", protect, createService);
+serviceRouter.put("/:id", protect, updateService);
 serviceRouter.delete("/:id", protect, deleteService);
 
 module.exports = {serviceRouter};
