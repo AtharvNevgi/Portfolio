@@ -13,7 +13,7 @@ const getSkills = async (req, res) => {
 // Create a skill (admin)
 const createSkill = async (req, res) => {
   try {
-    const { name, level } = req.body;
+    const { name, level, icon } = req.body;
 
     if (!name) {
       return res.status(400).json({ message: "Skill name is required" });
@@ -21,7 +21,8 @@ const createSkill = async (req, res) => {
 
     const skill = await Skill.create({
       name,
-      level
+      level,
+      icon
     });
 
     res.status(201).json({
