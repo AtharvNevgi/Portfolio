@@ -111,97 +111,165 @@ export default function Blog() {
   }
 
   return (
-    <div className="flex">
-      <Sidebar />
+      <div className="flex min-h-screen bg-linear-to-br from-slate-50 to-blue-50">
+        <Sidebar />
 
-      <div className="ml-64 p-10 w-full">
-        <h1 className="text-3xl font-bold mb-6">Blog</h1>
+        <div className="ml-64 p-12 w-full max-w-6xl">
+          {/* Header */}
+          <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/50 p-5 mb-12">
+            <h1 className="text-4xl font-bold bg-linear-to-r from-gray-900 to-slate-700 bg-clip-text text-transparent mb-2">
+              Blog
+            </h1>
+            <p className="text-gray-600 font-medium">
+              Create and manage articles for your portfolio blog
+            </p>
+          </div>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-4 max-w-2xl mb-10">
-
-          <input
-            type="text"
-            name="title"
-            placeholder="Blog Title"
-            value={formData.title}
-            onChange={handleChange}
-            className="border p-2 w-full rounded"
-            required
-          />
-
-          <input
-            type="text"
-            name="category"
-            placeholder="Category (optional)"
-            value={formData.category}
-            onChange={handleChange}
-            className="border p-2 w-full rounded"
-          />
-
-          <textarea
-            name="content"
-            placeholder="Blog Content"
-            value={formData.content}
-            onChange={handleChange}
-            className="border p-2 w-full rounded"
-            rows="8"
-            required
-          />
-
-          <button className="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer">
-            {editId ? "Update Blog" : "Add Blog"}
-          </button>
-        </form>
-
-        {editId ? 
-          (
-          <button className="bg-red-600 text-white px-4 py-2 m-4 rounded cursor-pointer" 
-            onClick={cancelEdit}
-          >
-          Cancel
-          </button>
-          ) : 
-          null
-        }
-
-        {/* Blog List */}
-        <div className="space-y-4">
-          {blogs.map((blog) => (
-            <div
-              key={blog._id}
-              className="border p-4 rounded flex justify-between"
-            >
-              <div>
-                <h2 className="font-bold">{blog.title}</h2>
-                <p className="text-sm text-gray-500">
-                  Category: {blog.category}
-                </p>
-                <p className="text-sm text-gray-400 mt-1">
-                  Slug: {blog.slug}
-                </p>
+          {/* Add / Edit Blog Form */}
+          <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/50 p-10 mb-12">
+            <form onSubmit={handleSubmit} className="space-y-8 max-w-3xl">
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-gray-800 tracking-wide">
+                  Blog Title
+                </label>
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="Blog Title"
+                  value={formData.title}
+                  onChange={handleChange}
+                  className="w-full px-5 py-4 text-lg border-2 border-gray-200 rounded-2xl bg-white/70 backdrop-blur-sm focus:border-blue-400 focus:ring-4 focus:ring-blue-100/50 focus:outline-none transition-all duration-300 shadow-sm hover:shadow-md hover:border-gray-300"
+                  required
+                />
               </div>
 
-              <div className="flex flex-col gap-2">
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-gray-800 tracking-wide">
+                  Category (optional)
+                </label>
+                <input
+                  type="text"
+                  name="category"
+                  placeholder="Category (optional)"
+                  value={formData.category}
+                  onChange={handleChange}
+                  className="w-full px-5 py-4 text-lg border-2 border-gray-200 rounded-2xl bg-white/70 backdrop-blur-sm focus:border-blue-400 focus:ring-4 focus:ring-blue-100/50 focus:outline-none transition-all duration-300 shadow-sm hover:shadow-md hover:border-gray-300"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-semibold text-gray-800 tracking-wide">
+                  Blog Content
+                </label>
+                <textarea
+                  name="content"
+                  placeholder="Blog Content"
+                  value={formData.content}
+                  onChange={handleChange}
+                  rows="8"
+                  className="w-full px-5 py-4 text-base md:text-lg border-2 border-gray-200 rounded-2xl bg-white/70 backdrop-blur-sm resize-vertical focus:border-blue-400 focus:ring-4 focus:ring-blue-100/50 focus:outline-none transition-all duration-300 shadow-sm hover:shadow-md hover:border-gray-300"
+                  required
+                />
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-gray-200">
                 <button
-                  onClick={() => handleEdit(blog)}
-                  className="px-4 py-2 text-sm font-medium text-blue-600 border border-blue-200 hover:bg-blue-50 rounded-lg transition-all duration-200 cursor-pointer"
+                  type="submit"
+                  className="flex-1 group relative bg-linear-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl border border-transparent hover:from-blue-700 hover:to-indigo-700 active:scale-95 focus:ring-4 focus:ring-blue-200/50 transform transition-all duration-300 hover:scale-[1.02] overflow-hidden cursor-pointer"
                 >
-                  Edit
+                  <span className="relative z-10 flex items-center justify-center gap-2">
+                    {editId ? "Update Blog" : "Add Blog"}
+                    <svg
+                      className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </span>
                 </button>
 
-                <button
-                  onClick={() => handleDelete(blog._id)}
-                  className="px-4 py-2 text-sm font-medium text-red-600 border border-red-200 hover:bg-red-50 rounded-lg transition-all duration-200 cursor-pointer"
-                >
-                  Delete
-                </button>
+                {editId ? (
+                  <button
+                    onClick={cancelEdit}
+                    className="flex-1 bg-linear-to-r from-red-500 to-red-600 text-white px-8 py-4 rounded-2xl font-semibold text-lg shadow-xl hover:shadow-2xl hover:from-red-600 hover:to-red-700 active:scale-95 focus:ring-4 focus:ring-red-200/50 transform transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                ) : null}
               </div>
-            </div>
-          ))}
+            </form>
+          </div>
+
+          {/* Blog List */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {blogs.map((blog) => (
+              <div
+                key={blog._id}
+                className="group bg-white/80 backdrop-blur-xl hover:bg-white/95 rounded-3xl shadow-xl hover:shadow-2xl border border-white/50 p-7 flex flex-col justify-between transform transition-all duration-300 hover:-translate-y-2 hover:border-blue-200/60 cursor-pointer"
+              >
+                <div>
+                  <h2 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors duration-300">
+                    {blog.title}
+                  </h2>
+
+                  <div className="flex flex-wrap items-center gap-2 text-xs mt-1 mb-3">
+                    {blog.category && (
+                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-medium border border-blue-100">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                        {blog.category}
+                      </span>
+                    )}
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-gray-50 text-gray-500 border border-gray-100">
+                      <svg
+                        className="w-3.5 h-3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 7h18M3 12h18M3 17h18"
+                        />
+                      </svg>
+                      <span className="truncate max-w-[140px]">
+                        Slug: {blog.slug}
+                      </span>
+                    </span>
+                  </div>
+
+                  {/* Optional preview line if you later add excerpt */}
+                  {/* <p className="text-sm text-gray-700 line-clamp-3">
+                    {blog.content}
+                  </p> */}
+                </div>
+
+                <div className="flex items-center gap-3 mt-6">
+                  <button
+                    onClick={() => handleEdit(blog)}
+                    className="px-5 py-2.5 text-xs font-semibold bg-linear-to-r from-blue-500 to-blue-600 text-white rounded-2xl shadow-lg hover:shadow-xl hover:from-blue-600 hover:to-blue-700 active:scale-95 focus:ring-4 focus:ring-blue-200/50 transform transition-all duration-300 cursor-pointer"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(blog._id)}
+                    className="px-5 py-2.5 text-xs font-semibold bg-linear-to-r from-red-500 to-red-600 text-white rounded-2xl shadow-lg hover:shadow-xl hover:from-red-600 hover:to-red-700 active:scale-95 focus:ring-4 focus:ring-red-200/50 transform transition-all duration-300 cursor-pointer"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-
       </div>
-    </div>
   );
 }
