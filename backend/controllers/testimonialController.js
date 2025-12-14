@@ -15,25 +15,25 @@ const createTestimonial = async (req, res) => {
   try {
     const { name, role, message } = req.body;
 
-    let profileImage = "";
-    if (req.file) {
-      profileImage = `/uploads/${req.file.filename}`;
+    if (!name || !message) {
+      return res.status(400).json({
+        message: "Name and message are required"
+      });
     }
 
-    const newTestimonial = new Testimonial({
+    const testimonial = await Testimonial.create({
       name,
       role,
-      message,
-      profileImage
+      message
     });
 
-    await newTestimonial.save();
-
-    res.json({
-      message: "Testimonial added",
-      testimonial: newTestimonial
+    res.status(201).json({
+      message: "Testimonial added successfully",
+      testimonial
     });
+
   } catch (error) {
+    console.error("CREATE TESTIMONIAL ERROR:", error);
     res.status(500).json({ error: error.message });
   }
 };
@@ -43,23 +43,25 @@ const updateTestimonial = async (req, res) => {
   try {
     const { name, role, message } = req.body;
 
-    let updatedData = { name, role, message };
-
-    if (req.file) {
-      updatedData.profileImage = `/uploads/${req.file.filename}`;
+    if (!name || !message) {
+      return res.status(400).json({
+        message: "Name and message are required"
+      });
     }
 
-    const updated = await Testimonial.findByIdAndUpdate(
+    const updatedTestimonial = await Testimonial.findByIdAndUpdate(
       req.params.id,
-      updatedData,
+      { name, role, message },
       { new: true }
     );
 
     res.json({
-      message: "Testimonial updated",
-      testimonial: updated
+      message: "Testimonial updated successfully",
+      testimonial: updatedTestimonial
     });
+
   } catch (error) {
+    console.error("UPDATE TESTIMONIAL ERROR:", error);
     res.status(500).json({ error: error.message });
   }
 };

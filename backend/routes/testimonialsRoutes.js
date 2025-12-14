@@ -14,8 +14,8 @@ const testimonialRouter = express.Router();
 testimonialRouter.get("/", getTestimonials);
 
 // Admin routes
-testimonialRouter.post("/", protect, upload.single("profileImage"), createTestimonial);
-testimonialRouter.put("/:id", protect, upload.single("profileImage"), updateTestimonial);
+testimonialRouter.post("/", protect, createTestimonial);
+testimonialRouter.put("/:id", protect, updateTestimonial);
 testimonialRouter.delete("/:id", protect, deleteTestimonial);
 
 module.exports = {testimonialRouter};

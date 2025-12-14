@@ -16,8 +16,8 @@ blogRouter.get("/", getBlogs);
 blogRouter.get("/:slug", getBlogBySlug);
 
 // Admin routes
-blogRouter.post("/", protect, upload.single("thumbnail"), createBlog);
-blogRouter.put("/:id", protect, upload.single("thumbnail"), updateBlog);
+blogRouter.post("/", protect, createBlog);
+blogRouter.put("/:id", protect, updateBlog);
 blogRouter.delete("/:id", protect, deleteBlog);
 
 module.exports = blogRouter;

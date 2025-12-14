@@ -56,7 +56,7 @@ export default function Skills() {
         text: "Your Skill has been saved.",
         showConfirmButton: false,
         timer: 1200
-    });
+      });
       setEditId(null);
       fetchSkills();
     } catch (err) {

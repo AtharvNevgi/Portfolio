@@ -54,7 +54,7 @@ export default function Services() {
       Swal.fire({
         icon: "success",
         title: "Saved Successfully!",
-        text: "Your Skill has been saved.",
+        text: "Your Services has been saved.",
         showConfirmButton: false,
         timer: 1200
       });
