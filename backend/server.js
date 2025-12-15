@@ -52,9 +52,9 @@ app.use("/cms/contact", contactRouter);
 
 
 
-app.get("/", (req, res) => {
-    res.send("CMS Backend Running");
-})
+// app.get("/", (req, res) => {
+//     res.send("CMS Backend Running");
+// })
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)

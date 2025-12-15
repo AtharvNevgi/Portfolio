@@ -1,6 +1,5 @@
 import { useState } from "react";
 import API from "../api/axios";
-import Swal from "sweetalert2";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -29,16 +28,9 @@ export default function Contact() {
     try {
       await API.post("/contact", form);
       setSuccess(true);
-      Swal.fire({
-            icon: "success",
-            title: "Message Sent Successfully!",
-            text: "",
-            showConfirmButton: false,
-            timer: 1200
-        });
       setForm({ name: "", email: "", message: "" });
     } catch (err) {
-      setError("Failed to send message. Please try again.");
+      setError("Failed to send message. Please try again.", err);
     } finally {
       setLoading(false);
     }
