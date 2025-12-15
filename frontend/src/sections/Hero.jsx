@@ -31,7 +31,7 @@ export default function Hero() {
                 </a>
 
                 <a
-                href="#contact"
+                href="/contact"
                 className="flex items-center justify-center px-8 py-4 border-2 border-slate-500 text-slate-300 bg-slate-800/50 backdrop-blur-sm rounded-xl font-semibold text-lg hover:bg-slate-700/70 hover:border-slate-400 transition-all duration-300 group gap-2"
                 >
                 Contact Me

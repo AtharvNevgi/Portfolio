@@ -65,7 +65,7 @@ export default function Footer() {
                     </a>
                   </li>
                   <li>
-                    <a href="#contact" className="group flex items-center gap-3 text-slate-400 hover:text-white hover:bg-slate-800/50 px-4 py-3 rounded-2xl backdrop-blur-sm border border-slate-700/30 transition-all duration-300 group-hover:shadow-lg group-hover:translate-x-2">
+                    <a href="/contact" className="group flex items-center gap-3 text-slate-400 hover:text-white hover:bg-slate-800/50 px-4 py-3 rounded-2xl backdrop-blur-sm border border-slate-700/30 transition-all duration-300 group-hover:shadow-lg group-hover:translate-x-2">
                       <span className="w-2 h-2 bg-linear-to-r from-orange-400 to-red-400 rounded-full group-hover:scale-110 transition-transform"></span>
                       Contact
                     </a>

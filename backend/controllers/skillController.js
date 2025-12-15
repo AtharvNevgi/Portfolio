@@ -39,7 +39,7 @@ const createSkill = async (req, res) => {
 // Update a skill
 const updateSkill = async (req, res) => {
   try {
-    const { name, level } = req.body;
+    const { name, level, icon } = req.body;
 
     if (!name) {
       return res.status(400).json({ message: "Skill name is required" });
@@ -47,7 +47,7 @@ const updateSkill = async (req, res) => {
 
     const updatedSkill = await Skill.findByIdAndUpdate(
       req.params.id,
-      { name, level },
+      { name, level, icon },
       { new: true }
     );
 

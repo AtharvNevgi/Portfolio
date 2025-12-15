@@ -60,7 +60,7 @@ export default function Skills() {
                     {/* Skill icon placeholder - replace with actual icons */}
                     <div className="w-full h-full rounded-xl bg-linear-to-r from-slate-700 to-slate-600 flex items-center justify-center">
                       {/* <span className="text-2xl opacity-75">{skill.icon || '⭐'}</span> */}
-                      <img src={skill.icon} alt="" className="rounded-xl"/>
+                      <img src={skill.icon} alt="Icon" className="rounded-xl"/>
                     </div>
                   </div>
                   <h3 className="font-bold text-white text-lg lg:text-xl mb-2 group-hover:text-blue-400 transition-colors">
