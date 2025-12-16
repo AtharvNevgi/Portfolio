@@ -25,6 +25,7 @@ const getBlogBySlug = async (req, res) => {
 
 // CREATE blog (admin)
 const createBlog = async (req, res) => {
+  console.log(req.body)
   try {
     const { title, content, category } = req.body;
 
@@ -75,7 +76,7 @@ const updateBlog = async (req, res) => {
         category,
         slug
       },
-      { new: true }
+      { new: true, runValidators: true }
     );
 
     res.json({

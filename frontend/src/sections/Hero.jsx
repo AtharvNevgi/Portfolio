@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section id="home" className="min-h-screen pt-20 pb-16 bg-linear-to-br from-gray-900 via-slate-900 to-black">
+    <section id="home" className="min-h-screen pt-30 pb-16 bg-linear-to-br from-gray-900 via-slate-900 to-black">
         <div className="max-w-6xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center relative">
             
             {/* LEFT CONTENT */}

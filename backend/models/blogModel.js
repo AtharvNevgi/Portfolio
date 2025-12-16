@@ -33,12 +33,18 @@ const blogSchema = new mongoose.Schema({
 });
 
 // Auto-create slug from title
-blogSchema.pre("save", function (next) {
-  if (this.title) {
-    this.slug = this.title.toLowerCase().replace(/ /g, "-") + "-" + Date.now();
+blogSchema.pre("validate", function () {
+  if (this.title && !this.slug) {
+    this.slug =
+      this.title
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, "-") +
+      "-" +
+      Date.now();
   }
-  next();
 });
+
 
 const Blog = mongoose.model("Blog", blogSchema);
 

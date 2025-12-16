@@ -16,78 +16,85 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white shadow z-50">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
-        {/* Logo */}
-        <Link to="/" className="text-2xl font-bold text-blue-600">
+    <nav className="fixed top-0 left-0 w-full z-50">
+  {/* Glass bar */}
+  <div className="backdrop-blur-2xl bg-slate-950/70 border-b border-slate-800/70 shadow-[0_10px_40px_rgba(15,23,42,0.9)]">
+    <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+      {/* Logo */}
+      <Link
+        to="/"
+        className="inline-flex items-center gap-2"
+      >
+        <span className="text-xl md:text-2xl font-extrabold bg-linear-to-r from-slate-50 via-blue-100 to-cyan-200 bg-clip-text text-transparent tracking-tight">
           MyPortfolio
-        </Link>
+        </span>
+      </Link>
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-6 text-gray-700 font-medium">
-          {navLinks.map((link) =>
-            link.href ? (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  className="hover:text-blue-600 transition"
-                >
-                  {link.name}
-                </a>
-              </li>
-            ) : (
-              <li key={link.name}>
-                <Link
-                  to={link.path}
-                  className="hover:text-blue-600 transition"
-                >
-                  {link.name}
-                </Link>
-              </li>
-            )
-          )}
-        </ul>
+      {/* Desktop Menu */}
+      <ul className="hidden md:flex items-center gap-6 text-sm font-medium">
+        {navLinks.map((link) =>
+          link.href ? (
+            <li key={link.name}>
+              <a
+                href={link.href}
+                className="relative text-slate-300 hover:text-cyan-200 transition-colors duration-200 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-linear-to-r from-blue-400 to-cyan-400 after:rounded-full hover:after:w-full after:transition-all after:duration-200"
+              >
+                {link.name}
+              </a>
+            </li>
+          ) : (
+            <li key={link.name}>
+              <Link
+                to={link.path}
+                className="relative text-slate-300 hover:text-cyan-200 transition-colors duration-200 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-linear-to-r from-blue-400 to-cyan-400 after:rounded-full hover:after:w-full after:transition-all after:duration-200"
+              >
+                {link.name}
+              </Link>
+            </li>
+          )
+        )}
+      </ul>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-2xl"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          ☰
-        </button>
-      </div>
+      {/* Mobile Menu Button */}
+      <button
+        className="md:hidden text-slate-100 text-2xl p-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-200 cursor-pointer"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {isOpen ? "✕" : "☰"}
+      </button>
+    </div>
+  </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-white border-t">
-          <ul className="flex flex-col p-4 gap-4 text-gray-700">
-            {navLinks.map((link) =>
-              link.href ? (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="block"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ) : (
-                <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    onClick={() => setIsOpen(false)}
-                    className="block"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              )
-            )}
-          </ul>
-        </div>
-      )}
-    </nav>
+  {/* Mobile Menu */}
+  {isOpen && (
+    <div className="md:hidden backdrop-blur-2xl bg-slate-950/90 border-b border-slate-800/80">
+      <ul className="flex flex-col px-6 py-4 gap-3 text-sm font-medium">
+        {navLinks.map((link) =>
+          link.href ? (
+            <li key={link.name}>
+              <a
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="block py-2 text-slate-200 hover:text-cyan-200 hover:bg-white/5 rounded-xl px-3 transition-colors duration-200"
+              >
+                {link.name}
+              </a>
+            </li>
+          ) : (
+            <li key={link.name}>
+              <Link
+                to={link.path}
+                onClick={() => setIsOpen(false)}
+                className="block py-2 text-slate-200 hover:text-cyan-200 hover:bg-white/5 rounded-xl px-3 transition-colors duration-200"
+              >
+                {link.name}
+              </Link>
+            </li>
+          )
+        )}
+      </ul>
+    </div>
+  )}
+</nav>
   );
 }
