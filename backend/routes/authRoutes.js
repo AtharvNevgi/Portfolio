@@ -1,6 +1,6 @@
 // import express from "express";
 const express = require("express");
-const { registerAdmin, loginAdmin } = require("../controllers/authController.js");
+const { registerAdmin, loginAdmin, changePassword } = require("../controllers/authController.js");
 const { protect } = require("../middleware/authMiddleware.js");
 
 const router = express.Router();
@@ -10,6 +10,9 @@ const router = express.Router();
 
 // Admin login
 router.post("/login", loginAdmin);
+
+// Change login password
+router.put("/change-password", protect, changePassword);
 
 // Protected test route
 router.get("/check", protect, (req, res) => {

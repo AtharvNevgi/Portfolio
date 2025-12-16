@@ -12,7 +12,8 @@ export default function Sidebar() {
     { name: "Services", path: "/services" },
     { name: "Testimonials", path: "/testimonials" },
     { name: "Blog", path: "/blog" },
-    { name: "Contact", path: "/contact" }
+    { name: "Contact", path: "/contact" },
+    { name: "Change Password", path: "/change-password" }
   ];
 
   const {logout} = useContext(AuthContext);

@@ -67,4 +67,34 @@ const loginAdmin = async (req, res) => {
   }
 };
 
-module.exports = {registerAdmin, loginAdmin}
+const changePassword = async (req, res) => {
+  try {
+    // console.log("User from token:", req.user); // DEBUG
+
+    const { currentPassword, newPassword } = req.body;
+
+    if (!req.user || !req.user._id) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+
+    const admin = await Admin.findById(req.user._id);
+
+    const isMatch = await bcrypt.compare(
+      currentPassword,
+      admin.password
+    );
+
+    if (!isMatch) {
+      return res.status(400).json({ message: "Current password is incorrect" });
+    }
+
+    admin.password = await bcrypt.hash(newPassword, 10);
+    await admin.save();
+
+    res.json({ message: "Password changed successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = {registerAdmin, loginAdmin, changePassword}

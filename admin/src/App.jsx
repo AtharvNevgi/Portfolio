@@ -10,6 +10,7 @@ import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Skill from "./pages/Skill";
+import ChangePassword from "./pages/ChangePassword";
 
 export default function App() {
   return (
@@ -93,6 +94,13 @@ export default function App() {
             </ProtectedRoute>
           }/>
 
+      <Route 
+        path="/change-password"
+        element={
+          <ProtectedRoute>
+            <ChangePassword />
+          </ProtectedRoute>
+        }/>
       </Routes>
     </BrowserRouter>
   );
