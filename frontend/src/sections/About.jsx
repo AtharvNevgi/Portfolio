@@ -20,14 +20,6 @@ export default function About() {
     fetchAbout();
   }, []);
 
-  if (loading) {
-    return (
-      <section className="py-20 text-center">
-        <p className="text-gray-500">Loading...</p>
-      </section>
-    );
-  }
-
   return (
     <section id="about" className="py-24 lg:py-32 bg-linear-to-b from-slate-900 via-slate-950 to-slate-950">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
@@ -45,14 +37,24 @@ export default function About() {
 
         {/* Content */}
         <div className="max-w-3xl mx-auto">
-          <div className="bg-slate-800/30 backdrop-blur-sm rounded-3xl p-10 lg:p-12 border border-slate-700/50">
-            <h3 className="text-3xl lg:text-4xl font-bold text-white mb-8 leading-tight">
-              {about?.title || "Title of the About"}
-            </h3>
-            <p className="text-lg lg:text-xl text-slate-300 leading-relaxed">
-              {about?.description || "About information will be updated soon."}
-            </p>
-          </div>
+          {
+            loading ? 
+            (
+              <div className="text-center py-20">
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400 mb-6"></div>
+              <p className="text-slate-400 text-lg">Loading skills...</p>
+            </div>
+            ) : (
+            <div className="bg-slate-800/30 backdrop-blur-sm rounded-3xl p-10 lg:p-12 border border-slate-700/50">
+              <h3 className="text-3xl lg:text-4xl font-bold text-white mb-8 leading-tight">
+                {about?.title || "Title of the About"}
+              </h3>
+              <p className="text-lg lg:text-xl text-slate-300 leading-relaxed">
+                {about?.description || "About information will be updated soon."}
+              </p>
+            </div>
+            )
+          }
         </div>
       </div>
     </section>
