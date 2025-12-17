@@ -21,7 +21,7 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section id="testimonials" className="py-24 lg:py-32 bg-linear-to-b from-slate-900 via-gray-900 to-black">
+    <section id="testimonials" className="py-24 lg:py-32 bg-linear-to-b from-slate-950 via-slate-950 to-slate-900">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         
         {/* Section Header */}

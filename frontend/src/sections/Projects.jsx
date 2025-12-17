@@ -21,7 +21,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <section id="projects" className="py-24 lg:py-32 bg-linear-to-b from-slate-900 via-gray-900 to-black">
+    <section id="projects" className="py-24 lg:py-32 bg-linear-to-b from-slate-950 via-slate-950 to-slate-900">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
         {/* Section Header */}

@@ -21,7 +21,7 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" className="py-24 lg:py-32 bg-linear-to-b from-slate-900 via-gray-900 to-black">
+    <section id="services" className="py-24 lg:py-32 bg-linear-to-b from-slate-900 via-slate-950 to-slate-950">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         
         {/* Section Header */}
