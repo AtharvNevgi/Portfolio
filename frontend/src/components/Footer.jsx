@@ -76,7 +76,7 @@ export default function Footer() {
           </div>
 
           {/* Copyright & Social */}
-          <div className="lg:text-right">
+          <div className="lg:text-left">
             <div className="bg-slate-800/30 backdrop-blur-sm rounded-3xl p-8 lg:p-10 border border-slate-700/50 h-full">
               <div className="flex items-center justify-between mb-6">
                 <p className="font-bold text-white text-xl lg:text-2xl mb-1 group-hover:text-rose-400 transition-colors">
@@ -84,16 +84,16 @@ export default function Footer() {
                 </p>
               </div>
               <div className="w-full h-px bg-linear-to-r from-slate-700 via-white to-slate-700/50 mb-6"></div>
-              <p className="text-xs text-slate-500 leading-relaxed">
-                Built with ❤️ using React.js & Tailwind CSS
-              </p>
+                <p className="text-xs text-slate-500 leading-relaxed mb-3">
+                  Built with ❤️ using React.js & Tailwind CSS
+                </p>
                 <div className="flex items-center gap-3">
                   {/* GitHub */}
                   <a
                     href="https://github.com/AtharvNevgi"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center justify-center w-9 h-9 rounded-2xl bg-white/5 border border-white/10 text-slate-200 hover:text-white hover:bg-white/10 hover:border-blue-400/60 shadow-sm hover:shadow-lg transition-all duration-200 cursor-pointer"
+                    className="inline-flex items-center justify-center w-9 h-9 rounded-2xl  text-slate-200 hover:text-white hover:bg-white/10 hover:border-blue-400/60 shadow-sm hover:shadow-lg transition-all duration-200 cursor-pointer"
                   >
                     <svg
                       className="w-5 h-5"
@@ -109,7 +109,7 @@ export default function Footer() {
                     href="https://www.linkedin.com/in/atharvanevgi/"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center justify-center w-9 h-9 rounded-2xl bg-white/5 border border-white/10 text-slate-200 hover:text-white hover:bg-white/10 hover:border-cyan-400/60 shadow-sm hover:shadow-lg transition-all duration-200 cursor-pointer"
+                    className="inline-flex items-center justify-center w-9 h-9 rounded-2xl  text-slate-200 hover:text-white hover:bg-white/10 hover:border-cyan-400/60 shadow-sm hover:shadow-lg transition-all duration-200 cursor-pointer"
                   >
                     <svg
                       className="w-5 h-5"
@@ -118,6 +118,15 @@ export default function Footer() {
                     >
                       <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.28 8.11h4.44V24H.28V8.11zM8.34 8.11h4.25v2.16h.06c.59-1.12 2.03-2.3 4.18-2.3 4.47 0 5.29 2.94 5.29 6.76V24h-4.44v-8.01c0-1.91-.03-4.37-2.66-4.37-2.67 0-3.08 2.08-3.08 4.23V24H8.34V8.11z" />
                     </svg>
+                  </a>
+                  {/* Admin */}
+                  <a
+                    href="https://portfolio-admin-ten-wheat.vercel.app/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center w-9 h-9 rounded-2xl  text-slate-200 hover:text-white hover:bg-white/10 hover:border-cyan-400/60 shadow-sm hover:shadow-lg transition-all duration-200 cursor-pointer"
+                  >
+                   <img src="/administrator.png" alt="Admin" title="Admin" />
                   </a>
                 </div>
               </div>

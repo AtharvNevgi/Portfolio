@@ -21,10 +21,6 @@ const Blog = () => {
     fetchBlogs();
   }, []);
 
-  if (loading) {
-    return <p className="text-center mt-10">Loading blogs...</p>;
-  }
-
   return (
     <section className="min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-slate-950">
       <div className="max-w-6xl mx-auto px-4 py-16">

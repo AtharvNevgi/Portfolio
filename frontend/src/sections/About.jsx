@@ -40,9 +40,9 @@ export default function About() {
           {
             loading ? 
             (
-              <div className="text-center py-20">
+            <div className="text-center py-20">
               <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400 mb-6"></div>
-              <p className="text-slate-400 text-lg">Loading skills...</p>
+              <p className="text-slate-400 text-lg">Loading about...</p>
             </div>
             ) : (
             <div className="bg-slate-800/30 backdrop-blur-sm rounded-3xl p-10 lg:p-12 border border-slate-700/50">
